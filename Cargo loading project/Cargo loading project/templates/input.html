@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Item Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Enter Details for {{ n }} Items</h1>
+
+    <form action="/calculate" method="POST">
+        <table>
+            <tr><th>Item Name</th><th>Weight</th><th>Profit</th></tr>
+            {% for i in range(n) %}
+            <tr>
+                <td><input type="text" name="item_{{ i }}" required></td>
+                <td><input type="number" step="0.1" name="weight_{{ i }}" required></td>
+                <td><input type="number" step="0.1" name="profit_{{ i }}" required></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button type="submit">Calculate Optimal Plan</button>
+    </form>
+</body>
+</html>

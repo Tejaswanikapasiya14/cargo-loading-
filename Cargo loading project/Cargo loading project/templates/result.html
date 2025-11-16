@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result - Cargo Optimization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Optimal Cargo Loading Result</h1>
+
+    <h2>💰 Maximum Profit: ₹{{ total_profit }}</h2>
+
+    <h3>✅ Selected Cargo</h3>
+    <table>
+        <tr><th>Item</th><th>Weight</th><th>Profit</th><th>Fraction Taken</th></tr>
+        {% for i, w, p, f in selected %}
+        <tr><td>{{ i }}</td><td>{{ w }}</td><td>{{ p }}</td><td>{{ f }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h3>❌ Skipped Cargo</h3>
+    <table>
+        <tr><th>Item</th><th>Weight</th><th>Profit</th></tr>
+        {% for i, w, p in skipped %}
+        <tr><td>{{ i }}</td><td>{{ w }}</td><td>{{ p }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h3>📊 Visualization</h3>
+    <img src="{{ url_for('static', filename='graph.png') }}" width="700">
+
+    <br><br>
+    <a href="/">← Start Again</a>
+</body>
+</html>
